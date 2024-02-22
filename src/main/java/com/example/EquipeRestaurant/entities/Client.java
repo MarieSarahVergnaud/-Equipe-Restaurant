@@ -22,3 +22,4 @@ public class Client {
     @Column(name = "password")
     private String password;
 }
+
