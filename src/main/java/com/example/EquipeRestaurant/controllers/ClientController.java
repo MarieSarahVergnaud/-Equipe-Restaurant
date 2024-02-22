@@ -28,12 +28,6 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping(path = "/{id}")
-    public ResponseEntity<Void> update(@PathVariable("id") int id, @RequestBody Client c) {
-        c.setId(id);
-        clientService.save(c);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") int id) {
