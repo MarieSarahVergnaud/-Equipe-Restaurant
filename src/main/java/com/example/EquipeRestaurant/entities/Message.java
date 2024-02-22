@@ -10,25 +10,21 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-@Entity @Table(name="employes")
+@Entity @Table(name="messages")
 @Data
-public class Employe {
+public class Message {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
-	@Column(name="nom")
-    private String nom;
-	@Column(name="prenom")
-    private String prenom;
-	@Column(name="email")
-    private String email;
-	@Column(name="password")
-    private String password;
-	@Column(name="token")
-    private String token;
-	@Column(name="role")
-    private String role;
+	@Column(name="titre")
+	private String titre;
+	@Column(name="contenu")
+	private String contenu;
 	
-	@OneToOne @JoinColumn(name="id_restaurant")
-    private Restaurant restaurant;
+	@OneToOne @JoinColumn(name="id_client")
+	private Client client;
+	
+	@OneToOne @JoinColumn(name="id_employe")
+	private Employe employe;
+	
 }
