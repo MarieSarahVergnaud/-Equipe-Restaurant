@@ -1,6 +1,12 @@
 package com.example.EquipeRestaurant.entities;
 
-import jakarta.persistence.*;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.GenerationType;
 import lombok.Data;
 
 @Entity
@@ -14,7 +20,7 @@ public class Reservation {
     private Restaurant restaurant;
     @ManyToOne
     private Client client;
-    @ManyToOne
-    private  Table table;
+
+    private Tables table;
 
 }
