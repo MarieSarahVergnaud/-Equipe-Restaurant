@@ -22,8 +22,9 @@ public class Commande {
 	
 	@Column(name="numero")
     private int numero;
+
 	@OneToOne @JoinColumn(name="id_table")
-    private Table table;
+    private Tables table;
 	@Column(name="etat")
 	private String etat;
 	
