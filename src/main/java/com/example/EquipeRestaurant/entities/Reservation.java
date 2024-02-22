@@ -1,15 +1,7 @@
 package com.example.EquipeRestaurant.entities;
 
 
-
 import jakarta.persistence.*;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -19,7 +11,6 @@ import java.time.LocalTime;
 @Table(name = "reservations")
 @Data
 public class Reservation {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -41,18 +32,7 @@ public class Reservation {
     @JoinColumn(name = "id_table")
     @ManyToOne
     private Tables tables;
+//correction
 
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@ManyToOne
-	private Restaurant restaurant;
-	@ManyToOne
-	private Client client;
-
-
-	@ManyToOne
-	private Tables table;
 
 }
