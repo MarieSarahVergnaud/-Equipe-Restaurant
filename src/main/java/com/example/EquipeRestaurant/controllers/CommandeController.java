@@ -1,5 +1,7 @@
 package com.example.EquipeRestaurant.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +50,25 @@ public class CommandeController {
 	public ResponseEntity<Void> delete(@PathVariable("id") int id) {
 		combll.delete(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@GetMapping("commandesenprepa/{id}")
+	public ResponseEntity<List<Commande>>findByEtatEnPrepa(@PathVariable int id){
+		return new ResponseEntity<>(combll.findByEtatEnPrepa(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("commandesprete/{id}")
+	public ResponseEntity<List<Commande>>findByEtatPrete(@PathVariable int id){
+		return new ResponseEntity<>(combll.findByEtatPrete(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("commandesservie/{id}")
+	public ResponseEntity<List<Commande>>findByEtatServie(@PathVariable int id){
+		return new ResponseEntity<>(combll.findByEtatServie(id), HttpStatus.OK);
+	}
+	
+	@GetMapping("commandesreglee/{id}")
+	public ResponseEntity<List<Commande>>findByEtatReglee(@PathVariable int id){
+		return new ResponseEntity<>(combll.findByEtatReglee(id), HttpStatus.OK);
 	}
 }

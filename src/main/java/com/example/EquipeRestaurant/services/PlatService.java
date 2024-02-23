@@ -1,8 +1,11 @@
 package com.example.EquipeRestaurant.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.EquipeRestaurant.dto.Addition;
 import com.example.EquipeRestaurant.entities.Plat;
 import com.example.EquipeRestaurant.repositories.PlatRepository;
 
@@ -29,7 +32,21 @@ public class PlatService {
 		platRepository.deleteById(id);
 	}
 
-
+	public Addition recapCommande(int id_commande) {
+		Addition addition = new Addition();
+		List<Plat> plats = platRepository.recapCommande(id_commande);
+		
+		int totalAddition = 0;
+        for (Plat plat : plats) {
+            totalAddition += plat.getPrix();
+        }
+        
+        addition.setPlats(plats);
+        addition.setTotalAddition(totalAddition);
+        
+		return addition;
+	}
+	
 	public List<Plat> getPlatsByRestaurantId(Integer restaurantId) {
 		return platRepository.getPlatsByRestaurantId(restaurantId);
 	}

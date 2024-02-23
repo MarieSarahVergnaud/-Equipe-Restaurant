@@ -22,7 +22,7 @@ public class Plat {
 	private String nom;
 
 	@Column(name = "prix")
-	private String prix;
+	private int prix;
 
 	@Column(name = "description")
 	private String description;
