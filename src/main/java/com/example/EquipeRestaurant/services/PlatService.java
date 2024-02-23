@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.EquipeRestaurant.entities.Plat;
 import com.example.EquipeRestaurant.repositories.PlatRepository;
 
+import java.util.List;
+
 @Service
 public class PlatService {
 	@Autowired
@@ -25,6 +27,11 @@ public class PlatService {
 
 	public void delete(int id) {
 		platRepository.deleteById(id);
+	}
+
+
+	public List<Plat> getPlatsByRestaurantId(Integer restaurantId) {
+		return platRepository.getPlatsByRestaurantId(restaurantId);
 	}
 
 }
