@@ -21,7 +21,7 @@ public interface PlatRepository extends CrudRepository<Plat, Integer> {
 	List<Plat> recapCommande(int id_commande);
 
 
-public interface PlatRepository extends CrudRepository<Plat, Integer> {
+
     @Query(value = "SELECT plats.* FROM plats " +
             "INNER JOIN cartes ON plats.id_carte = cartes.id " +
             "INNER JOIN restaurants ON cartes.id_restaurant = restaurants.id " +
