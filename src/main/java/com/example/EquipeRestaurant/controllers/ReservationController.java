@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
@@ -59,6 +61,12 @@ public class ReservationController {
         }
         reservationService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/restaurant/{id}")
+    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndEtat(@PathVariable("id") int id, @RequestParam String etat) {
+        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndEtat(id, etat);
+        return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
 }
 
