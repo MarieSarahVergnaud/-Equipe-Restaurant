@@ -29,8 +29,11 @@ public class TableService {
 		tableRepository.deleteById(id);
 	}
 	
-	public List<Tables> findByIdAndEtat(int id, String etat) {
+	public List<Tables> findByRestaurantIdAndEtat(int id, String etat) {
 		return tableRepository.findByRestaurantIdAndEtat( id, etat);
 		
 	}
+	
+	
+	
 }
