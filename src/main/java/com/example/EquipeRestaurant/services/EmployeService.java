@@ -62,6 +62,17 @@ public class EmployeService {
 		return employe;
 	}
 
+	public void logout(String token) {
+		Employe employe = dao.findByTokenIsAndExpirationTimeAfter(token, LocalDateTime.now());
+		if(employe != null) {
+			employe.setToken(null);
+			employe.setExpirationTime(null);
+			dao.save(employe);
+			
+		}
+	}
+	
+
 	/*
 	 * Les attributs static suivants et la méthode generateToken sont des outils
 	 * nous permettant de générer un token aléatoire de 64 caractères de long.
@@ -75,5 +86,6 @@ public class EmployeService {
 		secureRandom.nextBytes(randomBytes);
 		return base64encoder.encodeToString(randomBytes);
 	}
+
 
 }
