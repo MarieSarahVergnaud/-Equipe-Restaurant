@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.EquipeRestaurant.entities.Plat;
 import com.example.EquipeRestaurant.services.PlatService;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/plat")
@@ -51,6 +53,12 @@ public class PlatController {
 	public ResponseEntity<Void> delete(@PathVariable("id") int id) {
 		ps.delete(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+
+	@GetMapping("restaurant/{restaurantId}")
+	public ResponseEntity<List<Plat>> getPlatsByRestaurant(@PathVariable("restaurantId") int restaurantId) {
+		List<Plat> plats = ps.getPlatsByRestaurantId(restaurantId);
+		 return new ResponseEntity<>(plats,HttpStatus.OK);
 	}
 
 }
