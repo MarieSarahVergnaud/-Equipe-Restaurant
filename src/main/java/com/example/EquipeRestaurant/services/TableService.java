@@ -1,5 +1,7 @@
 package com.example.EquipeRestaurant.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +28,12 @@ public class TableService {
 	public void delete(int id) {
 		tableRepository.deleteById(id);
 	}
+	
+	public List<Tables> findByRestaurantIdAndEtat(int id, String etat) {
+		return tableRepository.findByRestaurantIdAndEtat( id, etat);
+		
+	}
+	
+	
+	
 }

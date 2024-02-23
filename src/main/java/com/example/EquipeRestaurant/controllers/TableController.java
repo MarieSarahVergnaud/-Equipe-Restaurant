@@ -1,5 +1,7 @@
 package com.example.EquipeRestaurant.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.EquipeRestaurant.entities.Tables;
@@ -31,6 +34,11 @@ public class TableController {
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<Tables> find(@PathVariable("id") int id) {
 		return new ResponseEntity<>(ts.findById(id), HttpStatus.OK);
+	}
+
+	@GetMapping(path = "/PathRestaurant/{id}")
+	public ResponseEntity<List<Tables>> findByIdRestaurant(@PathVariable("id") int id, @RequestParam String etat) {
+		return new ResponseEntity<List<Tables>>(ts.findByRestaurantIdAndEtat(id, etat), HttpStatus.OK);
 	}
 
 	@PostMapping

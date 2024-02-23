@@ -17,6 +17,8 @@ import com.example.EquipeRestaurant.entities.Plat;
 import com.example.EquipeRestaurant.dto.Addition;
 import com.example.EquipeRestaurant.services.PlatService;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/plat")
@@ -54,7 +56,13 @@ public class PlatController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	@GetMapping(path = "addition/{id}")
+	@GetMapping("restaurant/{restaurantId}")
+	public ResponseEntity<List<Plat>> getPlatsByRestaurant(@PathVariable("restaurantId") int restaurantId) {
+		List<Plat> plats = ps.getPlatsByRestaurantId(restaurantId);
+		 return new ResponseEntity<>(plats,HttpStatus.OK);
+	}
+  
+  	@GetMapping(path = "addition/{id}")
 	public ResponseEntity<Addition> recapCommande(@PathVariable("id") int id){
 		ps.recapCommande(id);
 		return new ResponseEntity<>(HttpStatus.OK);

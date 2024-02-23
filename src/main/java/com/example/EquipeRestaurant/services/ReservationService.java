@@ -1,10 +1,11 @@
 package com.example.EquipeRestaurant.services;
 
-import com.example.EquipeRestaurant.entities.Client;
 import com.example.EquipeRestaurant.entities.Reservation;
 import com.example.EquipeRestaurant.repositories.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ReservationService {
@@ -26,5 +27,9 @@ public class ReservationService {
 
     public void delete(int id) {
         reservationRepository.deleteById(id);
+    }
+
+    public List<Reservation> getReservationsByRestaurantIdAndEtat(int restaurantId, String etat) {
+        return reservationRepository.findByRestaurantIdAndEtat(restaurantId,etat);
     }
 }
