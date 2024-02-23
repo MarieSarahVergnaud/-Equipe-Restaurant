@@ -49,7 +49,7 @@ public class LoggedInFilter implements Filter {
 		 * Sinon, on autorise l'accès
 		 */
 		Employe employe = service.getByToken(auth);
-		if (user == null) {
+		if (employe == null) {
 			httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
 		} else {
 			chain.doFilter(request, response);

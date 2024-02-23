@@ -30,7 +30,7 @@ public class Employe {
     private String token;
 	@Column(name="role")
     private String role;
-	@Column(name="expirationTime")
+	@Column(name="expiration_time")
 	private LocalDateTime expirationTime;
 	
 	@OneToOne @JoinColumn(name="id_restaurant")
