@@ -35,15 +35,11 @@ public class TableController {
 	public ResponseEntity<Tables> find(@PathVariable("id") int id) {
 		return new ResponseEntity<>(ts.findById(id), HttpStatus.OK);
 	}
-	
-	//FINDBYIDANDETAT
+
 	@GetMapping(path = "/PathRestaurant/{id}")
 	public ResponseEntity<List<Tables>> findByIdRestaurant(@PathVariable("id") int id, @RequestParam String etat) {
-		return new ResponseEntity<List<Tables>>(ts.findByIdAndEtat(id, etat), HttpStatus.OK);
+		return new ResponseEntity<List<Tables>>(ts.findByRestaurantIdAndEtat(id, etat), HttpStatus.OK);
 	}
-	
-	
-	
 
 	@PostMapping
 	public ResponseEntity<Void> insert(@RequestBody Tables p) {
