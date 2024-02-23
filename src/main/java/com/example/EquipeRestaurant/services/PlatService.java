@@ -9,8 +9,6 @@ import com.example.EquipeRestaurant.dto.Addition;
 import com.example.EquipeRestaurant.entities.Plat;
 import com.example.EquipeRestaurant.repositories.PlatRepository;
 
-import java.util.List;
-
 @Service
 public class PlatService {
 	@Autowired
