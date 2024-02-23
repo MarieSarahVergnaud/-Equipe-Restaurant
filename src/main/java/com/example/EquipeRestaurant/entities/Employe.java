@@ -1,5 +1,7 @@
 package com.example.EquipeRestaurant.entities;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +30,8 @@ public class Employe {
     private String token;
 	@Column(name="role")
     private String role;
+	@Column(name="expirationTime")
+	private LocalDateTime expirationTime;
 	
 	@OneToOne @JoinColumn(name="id_restaurant")
     private Restaurant restaurant;
