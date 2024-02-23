@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.EquipeRestaurant.entities.Commande;
-import com.example.EquipeRestaurant.entities.Restaurant;
 import com.example.EquipeRestaurant.repositories.CommandeRepository;
 
 @Service
@@ -30,7 +29,19 @@ public class CommandeService {
 	}
 	
 	public List<Commande> findByEtatEnPrepa(int id_restaurant){
-		return dao.findByTableEtatContainingAndTableRestaurantIdEquals("EN PREPA", id_restaurant);
+		return dao.findByEtatContainingAndTableRestaurantIdEquals("EN PREPA", id_restaurant);
+	}
+	
+	public List<Commande> findByEtatPrete(int id_restaurant){
+		return dao.findByEtatContainingAndTableRestaurantIdEquals("PRETE", id_restaurant);
+	}
+	
+	public List<Commande> findByEtatServie(int id_restaurant){
+		return dao.findByEtatContainingAndTableRestaurantIdEquals("SERVIE", id_restaurant);
+	}
+	
+	public List<Commande> findByEtatReglee(int id_restaurant){
+		return dao.findByEtatContainingAndTableRestaurantIdEquals("REGLEE", id_restaurant);
 	}
 	
 }
