@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.EquipeRestaurant.entities.Plat;
+import com.example.EquipeRestaurant.dto.Addition;
 import com.example.EquipeRestaurant.services.PlatService;
 
 @RestController
@@ -53,4 +54,9 @@ public class PlatController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
+	@GetMapping(path = "addition/{id}")
+	public ResponseEntity<Addition> recapCommande(@PathVariable("id") int id){
+		ps.recapCommande(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 }
