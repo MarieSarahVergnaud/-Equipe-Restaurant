@@ -62,6 +62,7 @@ public class LoggedInFilter implements Filter {
 			String servletPath = httpReq.getServletPath();
 
 			if (      "/restaurants".equals(servletPath) 
+					||"/restaurants/{id}".equals(servletPath) 
 					|| "/table".equals(servletPath) 
 					|| "/client".equals(servletPath) 
 					|| "/carte".equals(servletPath)
