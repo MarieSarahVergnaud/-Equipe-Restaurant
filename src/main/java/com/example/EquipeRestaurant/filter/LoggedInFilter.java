@@ -61,7 +61,17 @@ public class LoggedInFilter implements Filter {
 
 			String servletPath = httpReq.getServletPath();
 
-			if ("/restaurant".equals(servletPath) || "/carte".equals(servletPath) || "/employe".equals(servletPath) )
+			if (      "/restaurants".equals(servletPath) 
+					|| "/table".equals(servletPath) 
+					|| "/client".equals(servletPath) 
+					|| "/carte".equals(servletPath)
+					|| "/plat".equals(servletPath)
+					|| "/reservations".equals(servletPath)
+					|| "/commandes".equals(servletPath)
+					|| "/employes".equals(servletPath)
+					
+					
+					)
 
 			{
 				if ("ADMIN".equals(employe.getRole())) {
@@ -72,16 +82,17 @@ public class LoggedInFilter implements Filter {
 					httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
 
 				
-		
+		// Creer URL spe pour pouvoir les mettre ic 
+					
 			
-		} if ("/restaurant".equals(servletPath) || "/carte".equals(servletPath) || "/employe".equals(servletPath) )
-
-		{
-			if ("EMPLO".equals(employe.getRole())) {
-				
-				httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
-			} else {
-				chain.doFilter(request, response);
+//		} if ("/table/create".equals(servletPath) || "/carte".equals(servletPath) || "/employe".equals(servletPath) )
+//
+//		{
+//			if ("EMPLO".equals(employe.getRole())) {
+//				
+//				httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
+//			} else {
+//				chain.doFilter(request, response);
 				
 
 			}
@@ -89,4 +100,4 @@ public class LoggedInFilter implements Filter {
 		}
 	}
 
-		}}}
+		}}
