@@ -54,51 +54,40 @@ public class LoggedInFilter implements Filter {
 		 * Sinon, on autorise l'accès
 		 */
 		Employe employe = service.getByToken(auth);
-
+		String servletPath = httpReq.getServletPath();
+		
 		if (employe == null) {
 			httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
-		} else {
-
-			String servletPath = httpReq.getServletPath();
-
-			if (      "/restaurants".equals(servletPath) 
-					||"/restaurants/{id}".equals(servletPath) 
-					|| "/table".equals(servletPath) 
-					|| "/client".equals(servletPath) 
-					|| "/carte".equals(servletPath)
-					|| "/plat".equals(servletPath)
-					|| "/reservations".equals(servletPath)
-					|| "/commandes".equals(servletPath)
-					|| "/employes".equals(servletPath)
-					
-					
-					)
-
-			{
-				if ("ADMIN".equals(employe.getRole())) {
-					chain.doFilter(request, response);
-
-				} else {
-
-					httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
-
-				
-		// Creer URL spe pour pouvoir les mettre ic 
-					
 			
-//		} if ("/table/create".equals(servletPath) || "/carte".equals(servletPath) || "/employe".equals(servletPath) )
-//
-//		{
-//			if ("EMPLO".equals(employe.getRole())) {
-//				
-//				httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
-//			} else {
-//				chain.doFilter(request, response);
-				
+	 	} else if ("ADMIN".equals(employe.getRole() ) ){
+			if      ("/employes".equals(servletPath)) {
+					   chain.doFilter(request, response);  
+					   }else {
+						  httpResp.sendError(HttpStatus.UNAUTHORIZED.value()); 
+					   }
+					
 
-			}
+	     } else if ("EMPLO".equals(employe.getRole() ) ){
+	    	 if         ((
+	    			 "/restaurants".equals(servletPath)
+	    			 || "/table".equals(servletPath) 
+		             || "/client".equals(servletPath) 
+		        	 || "/carte".equals(servletPath) 
+		        	 || "/plat".equals(servletPath) 
+		        	 || "/reservation".equals(servletPath) 
+		        	 || "/commandes".equals(servletPath) 
+		        	  )){
+                    	 chain.doFilter(request, response);
+                     }
+	    	 if ("/employes".equals(servletPath)) {
+	    		 httpResp.sendError(HttpStatus.UNAUTHORIZED.value()); 
+	    	 }
+			} else {
+				httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
+
+				}
+
 			
 		}
-	}
 
-		}}
+}
