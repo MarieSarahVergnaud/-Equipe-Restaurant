@@ -26,3 +26,11 @@ VALUES
 	(4, '2024-29-02 12:00:00', 5),
 	(5, '2024-29-02 10:00:00', 6),
 	(6, '2024-29-02 14:00:00', 7);
+
+
+INSERT INTO clients (id,nom, prenom, email, password)
+VALUES
+    (1,'Jean', 'Paulo', 'jean.paulo@example.com', 'password'),
+    (2,'Jeanne', 'Paula', 'jeanne.paula@example.com', 'password'),
+    (3,'Pierre', 'Dupont', 'pierre.dupont@example.com', 'password'),
+    (4,'Yves', 'Rocher', 'yves.rocher@example.com', 'password');
