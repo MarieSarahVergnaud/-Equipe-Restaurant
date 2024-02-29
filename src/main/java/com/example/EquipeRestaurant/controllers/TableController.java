@@ -41,7 +41,7 @@ public class TableController {
 		return new ResponseEntity<List<Tables>>(ts.findByRestaurantIdAndEtat(id, etat), HttpStatus.OK);
 	}
 
-	@PostMapping
+	@PostMapping (path= "/create")
 	public ResponseEntity<Void> insert(@RequestBody Tables p) {
 		ts.save(p);
 		return new ResponseEntity<>(HttpStatus.CREATED);
