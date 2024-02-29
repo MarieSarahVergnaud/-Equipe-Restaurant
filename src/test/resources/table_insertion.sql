@@ -9,7 +9,7 @@ DELETE FROM employes WHERE id_restaurant IN (SELECT id FROM restaurants);
 DELETE FROM restaurants;
 DELETE FROM clients;
 
-
+ 
 
 
 

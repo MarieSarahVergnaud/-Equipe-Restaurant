@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS messages ,employes, assocommandesplats,commandes, reservati
 
   
  
-CREATE TABLE restaurants (
+CREATE TABLE restaurants ( 
 
 id INT PRIMARY KEY ,
 
