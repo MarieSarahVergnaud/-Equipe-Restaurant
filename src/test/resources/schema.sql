@@ -1,3 +1,4 @@
+
 DROP TABLE IF EXISTS messages ,employes, assocommandesplats,commandes, reservations , plats, cartes, clients, tables, restaurants, adresses;
 
 
@@ -70,6 +71,13 @@ CREATE TABLE plats (
 
 id INT PRIMARY KEY ,
 
+CREATE TABLE reservations
+(
+    id               INT PRIMARY KEY,
+    reservation_time DATETIME,
+    table_id         INT,
+    FOREIGN KEY (table_id) REFERENCES tables (id)
+=======
 nom VARCHAR(50) NOT NULL,
 
 prix INT NOT NULL,
@@ -126,12 +134,28 @@ etat VARCHAR(20) DEFAULT 'EN PREPA' NOT NULL CHECK (etat IN ('EN PREPA', 'PRETE'
 
 FOREIGN KEY (id_table) REFERENCES tables(id)
 
+
 );
  
  
 CREATE TABLE assocommandesplats (
 
 id INT PRIMARY KEY ,
+
+CREATE TABLE clients
+(
+
+    id       INT PRIMARY KEY ,
+
+    nom      VARCHAR(50) NOT NULL,
+
+    prenom   VARCHAR(20) NOT NULL,
+
+    email    VARCHAR(60) NOT NULL,
+
+    password VARCHAR(60) NOT NULL
+
+);
 
 id_commande INT NOT NULL,
 

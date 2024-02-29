@@ -126,6 +126,21 @@ VALUES
 
 INSERT INTO employes (id,id_restaurant, nom, prenom, email, password, role)
 VALUES
+
+	(1, '2024-01-03 12:00:00', 2),
+	(2, '2024-29-02 8:00:00', 3),
+	(3, '2024-29-02 16:00:00', 4),
+	(4, '2024-29-02 12:00:00', 5),
+	(5, '2024-29-02 10:00:00', 6),
+	(6, '2024-29-02 14:00:00', 7);
+
+
+INSERT INTO clients (id,nom, prenom, email, password)
+VALUES
+    (1,'Jean', 'Paulo', 'jean.paulo@example.com', 'password'),
+    (2,'Jeanne', 'Paula', 'jeanne.paula@example.com', 'password'),
+    (3,'Pierre', 'Dupont', 'pierre.dupont@example.com', 'password'),
+    (4,'Yves', 'Rocher', 'yves.rocher@example.com', 'password')
 (1,(SELECT id FROM restaurants WHERE nom = 'Saveurs d''Haiti'), 'Dupont', 'Sacha', 'sacha.dupont@example.com', 'password', 'EMPLO'),
 (2,(SELECT id FROM restaurants WHERE nom = 'Saveurs d''Haiti'), 'Dutunnel', 'Poire', 'poire.dutunnel@example.com', 'password', 'EMPLO'),
 (3,(SELECT id FROM restaurants WHERE nom = 'Saveurs d''Haiti'), 'Duchemin', 'Antoine', 'antoine.duchemin@example.com', 'password', 'EMPLO'),
