@@ -73,7 +73,7 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/restaurant/{id}")
+    @GetMapping("/restaurant/etat/{id}")
     public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndEtat(@PathVariable("id") int id, @RequestParam String etat) {
         List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndEtat(id, etat);
         return new ResponseEntity<>(reservations, HttpStatus.OK);
@@ -96,5 +96,7 @@ public class ReservationController {
         }
         return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
+    
+
 }
 
