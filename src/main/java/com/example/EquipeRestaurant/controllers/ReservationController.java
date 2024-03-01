@@ -82,7 +82,10 @@ public class ReservationController {
     @GetMapping("/restaurant/date/{id}")
     public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndDate(@PathVariable("id") int id, @RequestParam LocalDate date) {
         List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndDate(id, date);
-        System.out.println(date);
+        if ( reservations.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
         return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
 }
