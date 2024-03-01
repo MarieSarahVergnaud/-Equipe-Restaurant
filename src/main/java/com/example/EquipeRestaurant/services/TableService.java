@@ -31,8 +31,9 @@ public class TableService {
 	
 	public List<Tables> findByRestaurantIdAndEtat(int id, String etat) {
 		return tableRepository.findByRestaurantIdAndEtat( id, etat);
-		
 	}
+	
+
 	
 	
 	

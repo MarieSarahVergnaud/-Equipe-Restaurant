@@ -1,11 +1,15 @@
 package com.example.EquipeRestaurant.repositories;
 
-import com.example.EquipeRestaurant.entities.Reservation;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+import com.example.EquipeRestaurant.entities.Reservation;
 
 public interface ReservationRepository extends CrudRepository<Reservation,Integer> {
 
     List<Reservation> findByRestaurantIdAndEtat(int restaurantId, String etat);
+
+	List<Reservation> findByRestaurantIdAndDate(int restaurantId, LocalDate date);
 }
