@@ -1,11 +1,13 @@
 package com.example.EquipeRestaurant.services;
 
-import com.example.EquipeRestaurant.entities.Reservation;
-import com.example.EquipeRestaurant.repositories.ReservationRepository;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.example.EquipeRestaurant.entities.Reservation;
+import com.example.EquipeRestaurant.repositories.ReservationRepository;
 
 @Service
 public class ReservationService {
@@ -32,4 +34,9 @@ public class ReservationService {
     public List<Reservation> getReservationsByRestaurantIdAndEtat(int restaurantId, String etat) {
         return reservationRepository.findByRestaurantIdAndEtat(restaurantId,etat);
     }
+    public List<Reservation> getReservationsByRestaurantIdAndDate(int restaurantId, LocalDate date ){
+    	return reservationRepository.findByRestaurantIdAndDate(restaurantId, date);
+    }
+    
+    
 }
