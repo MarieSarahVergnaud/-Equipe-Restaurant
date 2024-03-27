@@ -41,7 +41,7 @@ public class TableController {
 		return new ResponseEntity<List<Tables>>(ts.findByRestaurantIdAndEtat(id, etat), HttpStatus.OK);
 	}
 
-	@PostMapping (path= "/create")
+	@PostMapping(path = "/create")
 	public ResponseEntity<Void> insert(@RequestBody Tables p) {
 		ts.save(p);
 		return new ResponseEntity<>(HttpStatus.CREATED);
@@ -49,8 +49,21 @@ public class TableController {
 
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Void> update(@PathVariable("id") int id, @RequestBody Tables p) {
-		p.setId(id);
-		ts.save(p);
+		// creer une nouvelle instance de Tables que vous récupérez depuis votre service
+		// ("original" par exemple)
+		Tables original = ts.findById(id);
+
+		// Vérifier si l'instance originale a été trouvée
+		if (original == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Retourner 404 si non trouvé
+		}
+
+		// affectez à "original" les nouvelles informations que vous voulez modifier -->
+		// à savoir l'état
+		original.setEtat(p.getEtat());
+
+		// p.setId(id);
+		ts.save(original); // au lieu de sauver "p", vous sauvez "original" dont l'état est changé
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
