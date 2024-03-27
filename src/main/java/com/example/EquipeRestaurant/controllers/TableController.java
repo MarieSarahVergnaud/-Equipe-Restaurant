@@ -37,8 +37,8 @@ public class TableController {
 	}
 
 	@GetMapping(path = "/PathRestaurant/{id}")
-	public ResponseEntity<List<Tables>> findByIdRestaurant(@PathVariable("id") int id, @RequestParam String etat) {
-		return new ResponseEntity<List<Tables>>(ts.findByRestaurantIdAndEtat(id, etat), HttpStatus.OK);
+	public ResponseEntity<List<Tables>> findByIdRestaurant(@PathVariable("id") int id) {
+		return new ResponseEntity<List<Tables>>(ts.findByRestaurantId(id), HttpStatus.OK);
 	}
 
 	@PostMapping(path = "/create")
