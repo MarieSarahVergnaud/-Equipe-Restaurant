@@ -63,10 +63,18 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/restaurant/{id}")
-    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndEtat(@PathVariable("id") int id, @RequestParam String etat) {
-        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndEtat(id, etat);
+    @GetMapping("/today/restaurant/{id}")
+    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndCurrentDate(@PathVariable("id") int id) {
+        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndCurrentDate(id);
+        return new ResponseEntity<>(reservations, HttpStatus.OK);
+       
+    }
+    
+    @GetMapping("/tomorrow/restaurant/{id}")
+    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdFromTomorrow(@PathVariable("id") int id) {
+        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdFromTomorrow(id);
         return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
+
 }
 
