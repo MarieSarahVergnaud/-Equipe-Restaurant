@@ -1,17 +1,21 @@
 package com.example.EquipeRestaurant.repositories;
 
+import com.example.EquipeRestaurant.entities.Reservation;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
-
-import com.example.EquipeRestaurant.entities.Reservation;
-
 public interface ReservationRepository extends CrudRepository<Reservation, Integer> {
 
-	List<Reservation> findByRestaurantIdAndEtat(int restaurantId, String etat);
+    List<Reservation> findByRestaurantIdAndEtat(int restaurantId, String etat);
 
-	List<Reservation> findByRestaurantIdAndDate(int restaurantId, LocalDate date);
+	List<Reservation> findByRestaurantId(int restaurantId);
 
-	List<Reservation> findByRestaurantIdAndDateAndEtat(int restaurantId, LocalDate date, String etat);
+    @Query("SELECT r FROM Reservation r WHERE r.restaurant.id = :restaurantId AND r.date = :currentDate")
+	List<Reservation> findByRestaurantIdAndCurrentDate(int restaurantId, LocalDate currentDate);
+	
+    @Query("SELECT r FROM Reservation r WHERE r.restaurant.id = :restaurantId AND r.date >= :tomorrow")
+    List<Reservation> findByRestaurantIdAndTomorrowOrLater(int restaurantId, LocalDate tomorrow);
+
 }

@@ -1,6 +1,5 @@
 package com.example.EquipeRestaurant.controllers;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.EquipeRestaurant.entities.Reservation;
@@ -73,30 +71,18 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/restaurant/etat/{id}")
-    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndEtat(@PathVariable("id") int id, @RequestParam String etat) {
-        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndEtat(id, etat);
+    @GetMapping("/today/restaurant/{id}")
+    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndCurrentDate(@PathVariable("id") int id) {
+        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndCurrentDate(id);
         return new ResponseEntity<>(reservations, HttpStatus.OK);
+       
     }
     
-    @GetMapping("/restaurant/date/{id}")
-    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdAndDate(@PathVariable("id") int id, @RequestParam LocalDate date) {
-        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndDate(id, date);
-        if ( reservations.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+    @GetMapping("/tomorrow/restaurant/{id}")
+    public ResponseEntity<List<Reservation>> getReservationsByRestaurantIdFromTomorrow(@PathVariable("id") int id) {
+        List<Reservation> reservations = reservationService.getReservationsByRestaurantIdFromTomorrow(id);
         return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
-    
-    @GetMapping("/restaurant/date/etat/{id}")
-    public ResponseEntity<List<Reservation>> getReservationByRestaurantIdAndDateAndEtat(@PathVariable("id") int id, @RequestParam LocalDate date, @RequestParam String etat) {
-    	List<Reservation> reservations = reservationService.getReservationsByRestaurantIdAndDateAndEtat(id, date, etat);
-		if (reservations.isEmpty()) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(reservations, HttpStatus.OK);
-    }
-    
 
 }
 
