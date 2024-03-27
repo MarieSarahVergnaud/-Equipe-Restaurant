@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.EquipeRestaurant.entities.Tables;
@@ -49,21 +48,14 @@ public class TableController {
 
 	@PutMapping(path = "/{id}")
 	public ResponseEntity<Void> update(@PathVariable("id") int id, @RequestBody Tables p) {
-		// creer une nouvelle instance de Tables que vous récupérez depuis votre service
-		// ("original" par exemple)
+
 		Tables original = ts.findById(id);
 
-		// Vérifier si l'instance originale a été trouvée
 		if (original == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND); // Retourner 404 si non trouvé
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-
-		// affectez à "original" les nouvelles informations que vous voulez modifier -->
-		// à savoir l'état
 		original.setEtat(p.getEtat());
-
-		// p.setId(id);
-		ts.save(original); // au lieu de sauver "p", vous sauvez "original" dont l'état est changé
+		ts.save(original);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
