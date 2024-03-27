@@ -8,7 +8,9 @@ import com.example.EquipeRestaurant.entities.Tables;
 
 public interface TableRepository extends CrudRepository<Tables, Integer> {
 	
-	List<Tables> findByRestaurantIdAndEtat( int id, String etat);
+//	List<Tables> findByRestaurantIdAndEtat( int id, String etat);
+
+	List<Tables> findByRestaurantId(int id);
 	
 	
 	
