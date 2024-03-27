@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.EquipeRestaurant.entities.Reservation;
+import com.example.EquipeRestaurant.entities.Tables;
 import com.example.EquipeRestaurant.services.ReservationService;
 
 @RestController
@@ -51,12 +52,13 @@ public class ReservationController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Reservation> updateReservation(@PathVariable("id") int id, @RequestBody Reservation reservation) {
-        Reservation existingReservation = reservationService.getById(id);
-        if (existingReservation == null) {
+    	Reservation original = reservationService.getById(id);
+        
+        if (original == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        reservation.setId(id);
-        reservationService.save(reservation);
+        original.setEtat(reservation.getEtat());
+        reservationService.save(original);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
