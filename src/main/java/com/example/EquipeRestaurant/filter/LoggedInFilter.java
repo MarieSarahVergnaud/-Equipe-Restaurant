@@ -24,8 +24,8 @@ public class LoggedInFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-//		// A enlever quand on voudra que les filtres fonctionnent
-	chain.doFilter(request, response);
+////		// A enlever quand on voudra que les filtres fonctionnent
+chain.doFilter(request, response);
 	return;
 	}
 
@@ -75,7 +75,7 @@ public class LoggedInFilter implements Filter {
 //		             || "/client".equals(servletPath) 
 //		        	 || "/carte".equals(servletPath) 
 //		        	 || "/plat".equals(servletPath) 
-//		        	 || "/reservation".equals(servletPath) 
+//		        	 || "/reservations".equals(servletPath) 
 //		        	 || "/commandes".equals(servletPath) 
 //		        	  )){
 //                    	 chain.doFilter(request, response);
@@ -86,7 +86,9 @@ public class LoggedInFilter implements Filter {
 //			} else {
 //				httpResp.sendError(HttpStatus.UNAUTHORIZED.value());
 //
-			}
+//			}
+//		}
+	}
 
 			
 		

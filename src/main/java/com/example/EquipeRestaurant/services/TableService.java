@@ -29,10 +29,14 @@ public class TableService {
 		tableRepository.deleteById(id);
 	}
 	
+
 	public List<Tables> findByRestaurantId(int id) {
 		return tableRepository.findByRestaurantId(id);
 		
+
 	}
+	
+
 	
 	
 	
